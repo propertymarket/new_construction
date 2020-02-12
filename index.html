@@ -16,7 +16,7 @@
     <h1>新築シミュレーション</h1>
     <div class='container-fluid'>
         <div class='row'>
-            <div class='col-sm-5 offset-sm-1'>
+            <div class='col-sm-4 offset-sm-2'>
             <form>
                 <h3>土地情報</h3>
                 <div class='form-group'>
@@ -26,6 +26,7 @@
                 <div class='form-group'>
                     <label for='area_type'>用途地域</label>
                     <select id='area_type' name='area_type'>
+                        <option value=''>選択してください</option>
                         <option value='近商'>近商</option>
                         <option value='一低専'>一低専</option>
                         <option value='二低専'>二低専</option>
@@ -71,6 +72,7 @@
                 <div class='form-group'>
                     <label for='structure'>既存建物構造</label>
                     <select id='structure' name='structure'>
+                        <option value=''>選択してください</option>
                         <option value='RC'>RC</option>
                         <option value='鉄骨'>鉄骨</option>
                         <option value='軽鉄'>軽鉄</option>
@@ -104,108 +106,108 @@
 <div class='col-sm-5 offset-sm-1'>
         <table class='table table-bordered'>
             <tr>
-                <td rowspan='8'>土地情報</td>
+                <td rowspan='8' class='area-info'>土地情報</td>
                 <td>土地面積(㎡)</td>
-                <td id='target_area'></td>
+                <td id='target_area' class='info'></td>
             </tr>
             <tr>
                 <td>用途地域</td>
-                <td id='target_area_type'></td>
+                <td id='target_area_type' class='info'></td>
             </tr>
             <tr>
                 <td>角地</td>
-                <td id='target_corner_area'></td>
+                <td id='target_corner_area' class='info'></td>
             </tr>
             <tr>
                 <td>基準建蔽率(%)</td>
-                <td id='target_land_coverage'></td>
+                <td id='target_land_coverage' class='info'></td>
             </tr>
             <tr>
                 <td>基準容積率(%)</td>
-                <td id='target_floor_space'></td>
+                <td id='target_floor_space' class='info'></td>
             </tr>
             <tr>
                 <td>前面道路幅員(m)</td>
-                <td id='target_width_of_road'></td>
+                <td id='target_width_of_road' class='info'></td>
             </tr>
             <tr>
                 <td>有効建蔽率(%)</td>
-                <td id='valid_land_coverage'></td>
+                <td id='valid_land_coverage' class='info'></td>
             </tr>
             <tr>
                 <td>有効容積率(%)</td>
-                <td id='valid_floor_space'></td>
+                <td id='valid_floor_space' class='info'></td>
             </tr>
             <tr>
                 <th colspan='2' class='text-center'>土地価格(万円)</th>
-                <td id='target_area_price'></td>
+                <th id='target_area_price' class='info'></th>
             </tr>
             <tr>
                 <th colspan='2' class='text-center'>一種単価(万円)</th>
-                <td id='target_index'></td>
+                <th id='target_index' class='info'></th>
             </tr>
         
             <tr>
-                <td rowspan='8'>建築情報</td>
+                <td rowspan='9' class='constructure-info'>建築情報</td>
                 <td>既存建物面積(㎡)</td>
-                <td id='target_building_area'></td>
+                <td id='target_building_area' class='info'></td>
             </tr>
             <tr>
                 <td>既存建物構造</td>
-                <td id='target_structure'></td>
+                <td id='target_structure' class='info'></td>
             </tr>
             <tr>
-                <td>解体費用(万円)</td>
-                <td id='target_demolition_cost'></td>
+                <th>解体費用(万円)</th>
+                <th id='target_demolition_cost' class='info'></th>
             </tr>
             <tr>
                 <td>建築坪単価(万円)</td>
-                <td id='target_building_price_per_unit'></td>
+                <td id='target_building_price_per_unit' class='info'></td>
             </tr>
             <tr>
                 <td>延床面積(㎡)</td>
-                <td id='target_total_area'></td>
+                <td id='target_total_area' class='info'></td>
             </tr>
             <tr>
                 <td>レンタブル比率(％)</td>
-                <td id='target_rentable'></td>
+                <td id='target_rentable' class='info'></td>
             </tr>
             <tr>
                 <td>賃貸可能面積(㎡)</td>
-                <td id='available_area'></td>
+                <td id='available_area' class='info'></td>
             </tr>
             <tr>
                 <td>各戸面積(㎡)</td>
-                <td id='target_per_area'></td>
+                <td id='target_per_area' class='info'></td>
             </tr>
             <tr>
-                <td colspan='2' class='text-center'>総戸数</td>
-                <td id='total_rent'></td>
+                <td>総戸数</td>
+                <td id='total_rent' class='info'></td>
             </tr>
             <tr>
                 <th colspan='2' class='text-center'>建築費用(万円)</th>
-                <td id='building_cost'></td>
+                <th id='building_cost' class='info'></th>
             </tr>
             <tr>
-                <th colspan='2' class='text-center'>総事業費(万円)</th>
-                <td id='total_cost'></td>
+                <th colspan='2' class='text-center stand-out'>総事業費(万円)</th>
+                <th id='total_cost' class='info'></th>
             </tr>
             <tr>
-                <th rowspan='3' class='text-center'>収支</th>
+                <td rowspan='3' class='income'>収支</td>
                 <td>賃料坪単価(万円)</td>
-                <td id='target_rent_price_per_unit'></td>
+                <td id='target_rent_price_per_unit' class='info'></td>
             </tr>
             <tr>
                 <td>満室想定年収(万円)</td>
-                <td id='full_rent'></td>
+                <td id='full_rent' class='info'></td>
             </tr>
             <tr>
                 <td>戸数あたり賃料(万円)</td>
-                <td id='rent_per_unit'></td>
+                <td id='rent_per_unit' class='info'></td>
             </tr>
             <tr>
-                <th colspan='2' class='text-center'>総事業利回り(％)</th>
-                <td id='total_cf'></td>
+                <th colspan='2' class='text-center stand-out'>総事業利回り(％)</th>
+                <th id='total_cf' class='info'></th>
             </tr>
         </table>
         

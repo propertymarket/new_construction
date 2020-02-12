@@ -2,3 +2,22 @@ h1{
     text-align: center;
 }
 
+.stand-out {
+    background-color: yellow;
+}
+
+.income {
+    background: #abe4b8;
+}
+
+.constructure-info {
+    background: #e8afc9;
+}
+
+.area-info {
+    background: #a0c3e8;
+}
+
+.info {
+    text-align: right;
+}

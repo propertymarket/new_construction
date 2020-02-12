@@ -87,16 +87,25 @@
             valid_land_coverage. textContent = target_land_coverage;
         }
 
-        //有効容積率を求める
+        
+        //有効容積率を求める(有効容積率が基準容積率がより大きければ基準容積率を使う)
         const area_type = document.getElementById('target_area_type').textContent;
         const width_of_road = document.getElementById('target_width_of_road').textContent;
+        const target_valid_floor_space = document.getElementById('valid_floor_space');
+        const target_floor_space = document.getElementById('target_floor_space').textContent;
+
         if(area_type === '近商' || area_type === '商業' || area_type === '準工' || area_type === '工業' || area_type === '工専'){
-            let valid_floor_space = width_of_road * 0.6 * 100;
-            const target_valid_floor_space = document.getElementById('valid_floor_space');
-            target_valid_floor_space.textContent = Math.round(valid_floor_space);
+            var valid_floor_space = width_of_road * 0.6 * 100;
+            // const target_valid_floor_space = document.getElementById('valid_floor_space');
+            // target_valid_floor_space.textContent = Math.round(valid_floor_space);
         }else{
-            let valid_floor_space = width_of_road * 0.4 * 100;
-            const target_valid_floor_space = document.getElementById('valid_floor_space');
+            var valid_floor_space = width_of_road * 0.4 * 100;
+            // const target_valid_floor_space = document.getElementById('valid_floor_space');
+            // target_valid_floor_space.textContent = Math.round(valid_floor_space);
+        }
+        if(valid_floor_space >= target_floor_space){
+            target_valid_floor_space.textContent = Math.round(target_floor_space);
+        }else{
             target_valid_floor_space.textContent = Math.round(valid_floor_space);
         }
         
@@ -106,19 +115,14 @@
         }
 
         //一種単価
-        //有効容積率が基準容積率がより大きければ基準容積率を使う
         const area = document.getElementById('target_area').textContent;
         const target_area_price = document.getElementById('target_area_price').textContent;
         const target_index = document.getElementById('target_index');
-        const target_floor_space = document.getElementById('target_floor_space').textContent;
         let target_total_area = document.getElementById('target_total_area');
-        const valid_floor_space = document.getElementById('valid_floor_space').textContent;
+        var valid_floor_space = document.getElementById('valid_floor_space').textContent;
 
-        if(valid_floor_space >= target_floor_space){
-            target_index.textContent = Math.round(target_area_price / unit_of_land(area) / target_floor_space * 100);
-        }else{
-            target_index.textContent = Math.round(target_area_price / unit_of_land(area) / valid_floor_space * 100);
-        }
+        target_index.textContent = Math.round(target_area_price / unit_of_land(area) / valid_floor_space * 100);
+        
 
         //解体費用
             const target_structure = document.getElementById('target_structure').textContent;
@@ -134,18 +138,14 @@
          }else{
              var demolition_cost = unit_of_land(target_building_area) * 7;
              target_demolition_cost.textContent = Math.round(demolition_cost);
-        }
+        }console.log(unit_of_land(target_building_area));
         
         //延床面積
         //有効容積率が基準容積率がより大きければ基準容積率を使う
 
-        if(valid_floor_space >= target_floor_space){
-            var total_area = area * target_floor_space/100;
-            target_total_area.textContent = Math.round(total_area);
-        }else{
-            var total_area = area * valid_floor_space/100;
-            target_total_area.textContent = Math.round(total_area);
-        }
+        var total_area = area * valid_floor_space/100;console.log(total_area);console.log(valid_floor_space);
+        target_total_area.textContent = Math.round(total_area);
+        
 
         //賃貸可能面積
         const rentable = document.getElementById('target_rentable').textContent;
@@ -163,7 +163,7 @@
         //建築費用
         const building_cost = document.getElementById('building_cost');
         const building_price_per_unit = document.getElementById('target_building_price_per_unit').textContent;
-        const building_cost_no_round = building_price_per_unit * unit_of_land(total_area) + demolition_cost;
+        const building_cost_no_round = building_price_per_unit * unit_of_land(total_area) + demolition_cost;console.log(demolition_cost);console.log(unit_of_land(total_area));
         building_cost.textContent = Math.round(building_cost_no_round);
 
         //総事業費
