@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>new_construction</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+    
+</head>
+<body>
+    <h1>新築シミュレーション</h1>
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-sm-5 offset-sm-1'>
+            <form>
+                <h3>土地情報</h3>
+                <div class='form-group'>
+                    <label for='area'>土地面積</label>
+                    <input type='text' id='area' name='area' maxlength='255'>㎡</input>
+                </div>
+                <div class='form-group'>
+                    <label for='area_type'>用途地域</label>
+                    <select id='area_type' name='area_type'>
+                        <option value='近商'>近商</option>
+                        <option value='一低専'>一低専</option>
+                        <option value='二低専'>二低専</option>
+                        <option value='一中高'>一中高</option>
+                        <option value='二中高'>二中高</option>
+                        <option value='一住'>一住</option>
+                        <option value='二住'>二住</option>
+                        <option value='準住'>準住</option>
+                        <option value='田住'>田住</option>
+                        <option value='商業'>商業</option>
+                        <option value='準工'>準工</option>
+                        <option value='工業'>工業</option>
+                        <option value='工専'>工専</option>
+                    </select>
+                </div>
+                <div class='form-group'>
+                    <label for='corner_area'>角地</label>
+                    <input class='corner' type='radio' name='corner_area' value='はい'>はい</input>
+                    <input class='corner' type='radio' name='corner_area' value='いいえ'>いいえ</input>
+                </div>
+                <div class='form-group'>
+                    <label for='land_coverage'>基準建蔽率</label>
+                    <input type='text' id='land_coverage' name='land_coverage'>％</input>
+                </div>
+                <div class='form-group'>
+                    <label for='floor_space'>基準容積率</label>
+                    <input type='text' id='floor_space' name='floor_space'>％</input>
+                </div>
+                <div class='form-group'>
+                    <label for='width_of_road'>前面道路幅員</label>
+                    <input type='text' id='width_of_road' name='width_of_road'>m</input>
+                </div>
+                <div class='form-group'>
+                    <label for='area_price'>土地価格</label>
+                    <input type='text' id='area_price' name='area_price'>万円</input>
+                </div>
+                
+                <h3>建築情報</h3>
+                <div class='form-group'>
+                    <label for='building_area'>既存建物面積</label>
+                    <input type='text' id='building_area' name='building_area'>㎡</input>
+                </div>
+                <div class='form-group'>
+                    <label for='structure'>既存建物構造</label>
+                    <select id='structure' name='structure'>
+                        <option value='RC'>RC</option>
+                        <option value='鉄骨'>鉄骨</option>
+                        <option value='軽鉄'>軽鉄</option>
+                        <option value='木造'>木造</option>
+                    </select>
+                </div>
+                <div class='form-group'>
+                    <label for='building_price_per_unit'>建築坪単価</label>
+                    <input type='text' id='building_price_per_unit' name='building_price_per_unit'>万円</input>
+                </div>
+                <div class='form-group'>
+                    <label for='rentable'>レンタブル比率</label>
+                    <input type='text' id='rentable' name='rentable'>％</input>
+                </div>
+                <div class='form-group'>
+                    <label for='per_area'>各戸面積</label>
+                    <input type='text' id='per_area' name='per_area'>㎡</input>
+                </div>
+                <h3>収支</h3>
+                <div class='form-group'>
+                    <label for='rent_price_per_unit'>賃料坪単価</label>
+                    <input type='text' id='rent_price_per_unit' name='rent_price_per_unit'>万円</input>
+                </div>
+            </form>
+                    <button class='btn btn-info'>シミュレーション！</submit>
+            </div> 
+            
+          
+
+
+<div class='col-sm-5 offset-sm-1'>
+        <table class='table table-bordered'>
+            <tr>
+                <td rowspan='8'>土地情報</td>
+                <td>土地面積(㎡)</td>
+                <td id='target_area'></td>
+            </tr>
+            <tr>
+                <td>用途地域</td>
+                <td id='target_area_type'></td>
+            </tr>
+            <tr>
+                <td>角地</td>
+                <td id='target_corner_area'></td>
+            </tr>
+            <tr>
+                <td>基準建蔽率(%)</td>
+                <td id='target_land_coverage'></td>
+            </tr>
+            <tr>
+                <td>基準容積率(%)</td>
+                <td id='target_floor_space'></td>
+            </tr>
+            <tr>
+                <td>前面道路幅員(m)</td>
+                <td id='target_width_of_road'></td>
+            </tr>
+            <tr>
+                <td>有効建蔽率(%)</td>
+                <td id='valid_land_coverage'></td>
+            </tr>
+            <tr>
+                <td>有効容積率(%)</td>
+                <td id='valid_floor_space'></td>
+            </tr>
+            <tr>
+                <th colspan='2' class='text-center'>土地価格(万円)</th>
+                <td id='target_area_price'></td>
+            </tr>
+            <tr>
+                <th colspan='2' class='text-center'>一種単価(万円)</th>
+                <td id='target_index'></td>
+            </tr>
+        
+            <tr>
+                <td rowspan='8'>建築情報</td>
+                <td>既存建物面積(㎡)</td>
+                <td id='target_building_area'></td>
+            </tr>
+            <tr>
+                <td>既存建物構造</td>
+                <td id='target_structure'></td>
+            </tr>
+            <tr>
+                <td>解体費用(万円)</td>
+                <td id='target_demolition_cost'></td>
+            </tr>
+            <tr>
+                <td>建築坪単価(万円)</td>
+                <td id='target_building_price_per_unit'></td>
+            </tr>
+            <tr>
+                <td>延床面積(㎡)</td>
+                <td id='target_total_area'></td>
+            </tr>
+            <tr>
+                <td>レンタブル比率(％)</td>
+                <td id='target_rentable'></td>
+            </tr>
+            <tr>
+                <td>賃貸可能面積(㎡)</td>
+                <td id='available_area'></td>
+            </tr>
+            <tr>
+                <td>各戸面積(㎡)</td>
+                <td id='target_per_area'></td>
+            </tr>
+            <tr>
+                <td colspan='2' class='text-center'>総戸数</td>
+                <td id='total_rent'></td>
+            </tr>
+            <tr>
+                <th colspan='2' class='text-center'>建築費用(万円)</th>
+                <td id='building_cost'></td>
+            </tr>
+            <tr>
+                <th colspan='2' class='text-center'>総事業費(万円)</th>
+                <td id='total_cost'></td>
+            </tr>
+            <tr>
+                <th rowspan='3' class='text-center'>収支</th>
+                <td>賃料坪単価(万円)</td>
+                <td id='target_rent_price_per_unit'></td>
+            </tr>
+            <tr>
+                <td>満室想定年収(万円)</td>
+                <td id='full_rent'></td>
+            </tr>
+            <tr>
+                <td>戸数あたり賃料(万円)</td>
+                <td id='rent_per_unit'></td>
+            </tr>
+            <tr>
+                <th colspan='2' class='text-center'>総事業利回り(％)</th>
+                <td id='total_cf'></td>
+            </tr>
+        </table>
+        
+    </div> 
+</div>
+</div>
+<script src="script.js" defer></script>
+</body>
+</html>
