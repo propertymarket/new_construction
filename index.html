@@ -103,116 +103,116 @@
           
 
 
-<div class='col-sm-5 offset-sm-1'>
-        <table class='table table-bordered'>
-            <tr>
-                <td rowspan='8' class='area-info'>土地情報</td>
-                <td>土地面積(㎡)</td>
-                <td id='target_area' class='info'></td>
-            </tr>
-            <tr>
-                <td>用途地域</td>
-                <td id='target_area_type' class='info'></td>
-            </tr>
-            <tr>
-                <td>角地</td>
-                <td id='target_corner_area' class='info'></td>
-            </tr>
-            <tr>
-                <td>基準建蔽率(%)</td>
-                <td id='target_land_coverage' class='info'></td>
-            </tr>
-            <tr>
-                <td>基準容積率(%)</td>
-                <td id='target_floor_space' class='info'></td>
-            </tr>
-            <tr>
-                <td>前面道路幅員(m)</td>
-                <td id='target_width_of_road' class='info'></td>
-            </tr>
-            <tr>
-                <td>有効建蔽率(%)</td>
-                <td id='valid_land_coverage' class='info'></td>
-            </tr>
-            <tr>
-                <td>有効容積率(%)</td>
-                <td id='valid_floor_space' class='info'></td>
-            </tr>
-            <tr>
-                <th colspan='2' class='text-center'>土地価格(万円)</th>
-                <th id='target_area_price' class='info'></th>
-            </tr>
-            <tr>
-                <th colspan='2' class='text-center'>一種単価(万円)</th>
-                <th id='target_index' class='info'></th>
-            </tr>
+    <div class='col-sm-5 offset-sm-1'>
+            <table class='table table-bordered'>
+                <tr>
+                    <td rowspan='8' class='area-info'>土地情報</td>
+                    <td>土地面積(㎡)</td>
+                    <td id='target_area' class='info'></td>
+                </tr>
+                <tr>
+                    <td>用途地域</td>
+                    <td id='target_area_type' class='info'></td>
+                </tr>
+                <tr>
+                    <td>角地</td>
+                    <td id='target_corner_area' class='info'></td>
+                </tr>
+                <tr>
+                    <td>基準建蔽率(%)</td>
+                    <td id='target_land_coverage' class='info'></td>
+                </tr>
+                <tr>
+                    <td>基準容積率(%)</td>
+                    <td id='target_floor_space' class='info'></td>
+                </tr>
+                <tr>
+                    <td>前面道路幅員(m)</td>
+                    <td id='target_width_of_road' class='info'></td>
+                </tr>
+                <tr>
+                    <td>有効建蔽率(%)</td>
+                    <td id='valid_land_coverage' class='info'></td>
+                </tr>
+                <tr>
+                    <td>有効容積率(%)</td>
+                    <td id='valid_floor_space' class='info'></td>
+                </tr>
+                <tr>
+                    <th colspan='2' class='text-center'>土地価格(万円)</th>
+                    <th id='target_area_price' class='info'></th>
+                </tr>
+                <tr>
+                    <th colspan='2' class='text-center'>一種単価(万円)</th>
+                    <th id='target_index' class='info'></th>
+                </tr>
+            
+                <tr>
+                    <td rowspan='9' class='constructure-info'>建築情報</td>
+                    <td>既存建物面積(㎡)</td>
+                    <td id='target_building_area' class='info'></td>
+                </tr>
+                <tr>
+                    <td>既存建物構造</td>
+                    <td id='target_structure' class='info'></td>
+                </tr>
+                <tr>
+                    <th>解体費用(万円)</th>
+                    <th id='target_demolition_cost' class='info'></th>
+                </tr>
+                <tr>
+                    <td>建築坪単価(万円)</td>
+                    <td id='target_building_price_per_unit' class='info'></td>
+                </tr>
+                <tr>
+                    <td>延床面積(㎡)</td>
+                    <td id='target_total_area' class='info'></td>
+                </tr>
+                <tr>
+                    <td>レンタブル比率(％)</td>
+                    <td id='target_rentable' class='info'></td>
+                </tr>
+                <tr>
+                    <td>賃貸可能面積(㎡)</td>
+                    <td id='available_area' class='info'></td>
+                </tr>
+                <tr>
+                    <td>各戸面積(㎡)</td>
+                    <td id='target_per_area' class='info'></td>
+                </tr>
+                <tr>
+                    <td>総戸数</td>
+                    <td id='total_rent' class='info'></td>
+                </tr>
+                <tr>
+                    <th colspan='2' class='text-center'>建築費用(万円)</th>
+                    <th id='building_cost' class='info'></th>
+                </tr>
+                <tr>
+                    <th colspan='2' class='text-center stand-out'>総事業費(万円)</th>
+                    <th id='total_cost' class='info'></th>
+                </tr>
+                <tr>
+                    <td rowspan='3' class='income'>収支</td>
+                    <td>賃料坪単価(万円)</td>
+                    <td id='target_rent_price_per_unit' class='info'></td>
+                </tr>
+                <tr>
+                    <td>満室想定年収(万円)</td>
+                    <td id='full_rent' class='info'></td>
+                </tr>
+                <tr>
+                    <td>戸数あたり賃料(万円)</td>
+                    <td id='rent_per_unit' class='info'></td>
+                </tr>
+                <tr>
+                    <th colspan='2' class='text-center stand-out'>総事業利回り(％)</th>
+                    <th id='total_cf' class='info'></th>
+                </tr>
+            </table>
         
-            <tr>
-                <td rowspan='9' class='constructure-info'>建築情報</td>
-                <td>既存建物面積(㎡)</td>
-                <td id='target_building_area' class='info'></td>
-            </tr>
-            <tr>
-                <td>既存建物構造</td>
-                <td id='target_structure' class='info'></td>
-            </tr>
-            <tr>
-                <th>解体費用(万円)</th>
-                <th id='target_demolition_cost' class='info'></th>
-            </tr>
-            <tr>
-                <td>建築坪単価(万円)</td>
-                <td id='target_building_price_per_unit' class='info'></td>
-            </tr>
-            <tr>
-                <td>延床面積(㎡)</td>
-                <td id='target_total_area' class='info'></td>
-            </tr>
-            <tr>
-                <td>レンタブル比率(％)</td>
-                <td id='target_rentable' class='info'></td>
-            </tr>
-            <tr>
-                <td>賃貸可能面積(㎡)</td>
-                <td id='available_area' class='info'></td>
-            </tr>
-            <tr>
-                <td>各戸面積(㎡)</td>
-                <td id='target_per_area' class='info'></td>
-            </tr>
-            <tr>
-                <td>総戸数</td>
-                <td id='total_rent' class='info'></td>
-            </tr>
-            <tr>
-                <th colspan='2' class='text-center'>建築費用(万円)</th>
-                <th id='building_cost' class='info'></th>
-            </tr>
-            <tr>
-                <th colspan='2' class='text-center stand-out'>総事業費(万円)</th>
-                <th id='total_cost' class='info'></th>
-            </tr>
-            <tr>
-                <td rowspan='3' class='income'>収支</td>
-                <td>賃料坪単価(万円)</td>
-                <td id='target_rent_price_per_unit' class='info'></td>
-            </tr>
-            <tr>
-                <td>満室想定年収(万円)</td>
-                <td id='full_rent' class='info'></td>
-            </tr>
-            <tr>
-                <td>戸数あたり賃料(万円)</td>
-                <td id='rent_per_unit' class='info'></td>
-            </tr>
-            <tr>
-                <th colspan='2' class='text-center stand-out'>総事業利回り(％)</th>
-                <th id='total_cf' class='info'></th>
-            </tr>
-        </table>
-        
-    </div> 
-</div>
+        </div> 
+    </div>
 </div>
 <script src="script.js" defer></script>
 </body>
