@@ -108,19 +108,16 @@
         
 
         //賃貸可能面積
-        const rentable = document.getElementById('target_rentable').textContent;
-        const available_area_no_round = total_area * rentable / 100;
+        const available_area_no_round = total_area * document.getElementById('target_rentable').textContent / 100;
         document.getElementById('available_area').textContent = Math.round(available_area_no_round);
 
         //総戸数
-        const available_area = document.getElementById('available_area').textContent;
         const per_area = document.getElementById('target_per_area').textContent;
-        const total_rent_no_round = available_area / per_area;
+        const total_rent_no_round = document.getElementById('available_area').textContent / per_area;
         document.getElementById('total_rent').textContent = Math.round(total_rent_no_round);
 
         //建築費用
-        const building_price_per_unit = document.getElementById('target_building_price_per_unit').textContent;
-        const building_cost_no_round = building_price_per_unit * unit_of_land(total_area) + demolition_cost;
+        const building_cost_no_round = document.getElementById('target_building_price_per_unit').textContent * unit_of_land(total_area) + demolition_cost;
         document.getElementById('building_cost').textContent = Math.round(building_cost_no_round);
 
         //総事業費
@@ -132,7 +129,6 @@
         document.getElementById('full_rent').textContent = Math.round(full_rent_no_round);
 
         //戸数あたり賃料
-        // var total_rent = document.getElementById('total_rent').textContent;
         document.getElementById('rent_per_unit').textContent = (full_rent_no_round / 12 / total_rent_no_round).toFixed(1);
 
         //総事業利回り
