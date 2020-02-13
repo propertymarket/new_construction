@@ -1,25 +1,15 @@
 'use strict';
 
 {
-    //  function showData(pull,push){
-    //      const insert = document.getElementById(this.push);
-    //      const data = document.getElementById(this.pull).value;
-    //     //  return insert. textContent = ${data};
-    //     return console.log(data);
-    //  };
-     
-
-    // document.getElementById('area').addEventListener('blur',{pull:target_area, push:area, handleEvent: showData});
-        
+     function blurEvent(e){
+       const insert_info = document.getElementById(this.insert_info);
+       insert_info. textContent = document.getElementById(this.info).value;
+      };
     
-    document.getElementById('area').addEventListener('blur',() => {
-        const target_area = document.getElementById('target_area');
-        target_area. textContent = document.getElementById('area').value;
-    });
-    document.getElementById('area_type').addEventListener('blur',() => {
-        const target_area_type = document.getElementById('target_area_type');
-        target_area_type. textContent = document.getElementById('area_type').value;
-    });
+    document.getElementById('area').addEventListener('blur',{info:'area', insert_info:'target_area', handleEvent:blurEvent});
+    
+    document.getElementById('area_type').addEventListener('blur',{info:'area_type', insert_info:'target_area_type', handleEvent:blurEvent});
+      
     const corner = document.getElementsByClassName('corner');
         for(let i = 0; i < 2; i++){
             corner[i].addEventListener('click',() => {
@@ -32,49 +22,26 @@
                 }
         })
     };
-        
+    document.getElementById('land_coverage').addEventListener('blur',{info:'land_coverage', insert_info:'target_land_coverage', handleEvent:blurEvent});
        
-    
-    document.getElementById('land_coverage').addEventListener('blur',() => {
-        const target_land_coverage = document.getElementById('target_land_coverage');
-        target_land_coverage. textContent = document.getElementById('land_coverage').value;
-    });
-    document.getElementById('floor_space').addEventListener('blur',() => {
-        const target_floor_space = document.getElementById('target_floor_space');
-        target_floor_space. textContent = document.getElementById('floor_space').value;
-    });
-    document.getElementById('width_of_road').addEventListener('blur',() => {
-        const target_width_of_road = document.getElementById('target_width_of_road');
-        target_width_of_road. textContent = document.getElementById('width_of_road').value;
-    });
-    document.getElementById('area_price').addEventListener('blur',() => {
-        const target_area_price = document.getElementById('target_area_price');
-        target_area_price. textContent = document.getElementById('area_price').value;
-    });
-    document.getElementById('building_area').addEventListener('blur',() => {
-        const target_building_area = document.getElementById('target_building_area');
-        target_building_area. textContent = document.getElementById('building_area').value;
-    });
-    document.getElementById('structure').addEventListener('blur',() => {
-        const target_structure = document.getElementById('target_structure');
-        target_structure. textContent = document.getElementById('structure').value;
-    });
-    document.getElementById('building_price_per_unit').addEventListener('blur',() => {
-        const target_building_price_per_unit = document.getElementById('target_building_price_per_unit');
-        target_building_price_per_unit. textContent = document.getElementById('building_price_per_unit').value;
-    });
-    document.getElementById('rentable').addEventListener('blur',() => {
-        const target_rentable = document.getElementById('target_rentable');
-        target_rentable. textContent = document.getElementById('rentable').value;
-    });
-    document.getElementById('per_area').addEventListener('blur',() => {
-        let target_per_area = document.getElementById('target_per_area');
-        target_per_area. textContent = document.getElementById('per_area').value;
-    });
-    document.getElementById('rent_price_per_unit').addEventListener('blur',() => {
-        const target_rent_price_per_unit = document.getElementById('target_rent_price_per_unit');
-        target_rent_price_per_unit. textContent = document.getElementById('rent_price_per_unit').value;
-    });
+    document.getElementById('floor_space').addEventListener('blur',{info:'floor_space', insert_info:'target_floor_space', handleEvent:blurEvent});
+       
+    document.getElementById('width_of_road').addEventListener('blur',{info:'width_of_road', insert_info:'target_width_of_road', handleEvent:blurEvent});
+       
+    document.getElementById('area_price').addEventListener('blur',{info:'area_price', insert_info:'target_area_price', handleEvent:blurEvent});
+        
+    document.getElementById('building_area').addEventListener('blur',{info:'building_area', insert_info:'target_building_area', handleEvent:blurEvent});
+       
+    document.getElementById('structure').addEventListener('blur',{info:'structure', insert_info:'target_structure', handleEvent:blurEvent});
+       
+    document.getElementById('building_price_per_unit').addEventListener('blur',{info:'building_price_per_unit', insert_info:'target_building_price_per_unit', handleEvent:blurEvent});
+        
+    document.getElementById('rentable').addEventListener('blur',{info:'rentable', insert_info:'target_rentable', handleEvent:blurEvent});
+        
+    document.getElementById('per_area').addEventListener('blur',{info:'per_area', insert_info:'target_per_area', handleEvent:blurEvent});
+       
+    document.getElementById('rent_price_per_unit').addEventListener('blur',{info:'rent_price_per_unit', insert_info:'target_rent_price_per_unit', handleEvent:blurEvent});
+       
     
     document.querySelector('button').addEventListener('click',()=>{
         //角地だったら基準建蔽率が１０％緩和
@@ -96,12 +63,8 @@
 
         if(area_type === '近商' || area_type === '商業' || area_type === '準工' || area_type === '工業' || area_type === '工専'){
             var valid_floor_space = width_of_road * 0.6 * 100;
-            // const target_valid_floor_space = document.getElementById('valid_floor_space');
-            // target_valid_floor_space.textContent = Math.round(valid_floor_space);
         }else{
             var valid_floor_space = width_of_road * 0.4 * 100;
-            // const target_valid_floor_space = document.getElementById('valid_floor_space');
-            // target_valid_floor_space.textContent = Math.round(valid_floor_space);
         }
         if(valid_floor_space >= target_floor_space){
             target_valid_floor_space.textContent = Math.round(target_floor_space);
